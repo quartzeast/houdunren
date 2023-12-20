@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绝对定位对照元素</title>
+    <style>
+      /* 相对定位是相对于元素原来在文档流（document flow）中的位置来设置一些偏移量 */
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        border: solid 5px blueviolet;
+        width: 400px;
+        height: 400px;
+        padding: 30px;
+        margin-top: 100px;
+        margin-left: 100px;
+        position: relative;
+      }
+
+      p img {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 0;
+        /* top: 0; */
+        bottom: 0;
+        /* top: 100px; */
+        /* right: 0; */
+        /* bottom: 0; */
+        /* left: 50%; */
+        /* 
+          绝对定位的元素会脱离标准流，会丢失其空间位置
+          默认情况下绝对定位的元素会参照页面
+          如果父元素也有定位属性（相对/绝对/固定/粘性），绝对定位的元素就会参照拥有定位属性的父元素
+        */
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <img src="images/avatar.jpg" alt="" />
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam iste
+      totam nulla necessitatibus dolorem velit quisquam quas, repellat
+      asperiores, eum voluptatum repellendus aspernatur eius molestiae
+      voluptates! Beatae consequuntur ut accusamus.
+    </p>
+  </body>
+</html>

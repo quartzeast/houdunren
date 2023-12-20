@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>通过定位设置尺寸</title>
+    <style>
+      article {
+        border: 8px solid blueviolet;
+        width: 400px;
+        height: 400px;
+        margin: 100px;
+        position: relative;
+      }
+
+      div {
+        background: blueviolet;
+        /* width: 200px;
+        height: 200px; */
+        position: absolute;
+        left: 200px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        /* right: 20px; */
+
+        /*
+        left: 100px;
+        top: 100px;
+        right: 100px;
+        bottom: 100px;
+        */
+
+        /*
+          当设置了固定宽高时，改变 left/right 等偏移量不会改变元素的尺寸
+
+          在 CSS 中，当同时设置了 left 和 right 属性，且 position 属性为 absolute 时，元素的宽度将会被拉伸以满足这两个属性的值。然而，如果已经明确设置了 width 属性，那么 right 属性将会被忽略，因为 width 属性的优先级更高。
+
+          在上面代码中已经设置了 width: 200px;，所以 right: 20px; 被忽略了。如果你想要 right 属性生效，你需要移除 width 属性。
+        */
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <div></div>
+    </article>
+  </body>
+</html>

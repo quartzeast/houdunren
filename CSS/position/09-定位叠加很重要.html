@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>定位叠加很重要</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        padding: 100px;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      ul li {
+        width: 300px;
+        height: 185px;
+        border: solid 3px blueviolet;
+        position: relative;
+        cursor: pointer;
+      }
+
+      ul li:hover img {
+        z-index: -2;
+      }
+
+      ul li img {
+        width: 100%;
+        position: absolute;
+        z-index: 2;
+      }
+
+      ul li > span {
+        color: white;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: blueviolet;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 14px;
+        line-height: 2em;
+        left: 10px;
+        top: 10px;
+        box-shadow: 0 0 5px #ddd;
+        z-index: 3;
+      }
+
+      div {
+        width: 100%;
+        height: 100%;
+        background: blueviolet;
+        position: relative; /* 后面的定位元素的优先级高于前面定位的元素 */
+        z-index: 1;
+      }
+
+      div h2 {
+        text-align: center;
+        line-height: 8em;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <span>热</span>
+        <img src="images/2.webp" alt="" />
+        <div>
+          <h2>定位操作布局</h2>
+        </div>
+      </li>
+    </ul>
+  </body>
+</html>

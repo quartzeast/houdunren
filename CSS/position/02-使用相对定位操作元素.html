@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>使用相对定位操作元素</title>
+    <style>
+      /* 相对定位是相对于元素原来在文档流（document flow）中的位置来设置一些偏移量 */
+      * {
+        padding: 0;
+        margin: 0;
+      }
+
+      p {
+        border: solid 5px blueviolet;
+        width: 400px;
+        height: 400px;
+        padding: 30px;
+      }
+
+      p img {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top: 20px;
+        /* left: 20px; */
+        /* right: 30px; */
+        /* bottom: 30px; */
+
+        /* 
+          top/left/bottom/right 只有在设置了 position 属性才有效，并且相对定位
+          时，元素在文档流中的当前的位置是保留的
+          偏移量可以设置为负数，此时往轴的反方向移动
+         */
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <img src="images/avatar.jpg" alt="" />
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam iste
+      totam nulla necessitatibus dolorem velit quisquam quas, repellat
+      asperiores, eum voluptatum repellendus aspernatur eius molestiae
+      voluptates! Beatae consequuntur ut accusamus.
+    </p>
+  </body>
+</html>

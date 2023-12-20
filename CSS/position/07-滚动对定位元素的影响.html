@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滚动对定位元素的影响</title>
+    <style>
+      article {
+        border: 8px solid blueviolet;
+        width: 400px;
+        height: 400px;
+        margin: 100px;
+        position: relative;
+        overflow: scroll;
+      }
+
+      section {
+        height: 3000px;
+        background: #ddd;
+      }
+
+      /* div 依然会滚动 */
+      div {
+        background: blueviolet;
+        width: 200px;
+        height: 200px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      <section>
+        <div></div>
+      </section>
+    </article>
+  </body>
+</html>
