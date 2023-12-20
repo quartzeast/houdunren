@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      new Promise((resolve, reject) => {
+        // resolve('干成了');
+        reject('没干成');
+      })
+        .then() // 什么都不处理会一直向后传递
+        .then(null, reason => {
+          console.log(`处理了失败的状态，${reason}`);
+        })
+        .then(
+          value => {
+            console.log(value);
+          },
+          reason => {
+            console.log(reason);
+          }
+        );
+
+      // 处理失败的回调可以不用写，处理成功的回调也可以不用写，可以传递一个 null 代替
+    </script>
+  </body>
+</html>

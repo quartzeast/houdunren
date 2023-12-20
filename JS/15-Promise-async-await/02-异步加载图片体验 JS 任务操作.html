@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function loadImg(src, resolve, reject) {
+        let image = new Image();
+        image.src = src;
+        image.onload = () => {
+          resolve(image);
+        };
+        image.onerror = reject;
+      }
+
+      loadImg(
+        'images/1.png',
+        image => {
+          document.body.appendChild(image);
+          console.log('图片加载成功');
+        },
+        () => {
+          console.log('图片加载失败');
+        }
+      );
+
+      console.log('Hello World');
+    </script>
+  </body>
+</html>

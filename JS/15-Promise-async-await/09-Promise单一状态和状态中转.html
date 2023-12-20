@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      new Promise((resolve, reject) => {
+        resolve('fulfilled');
+      }).then(
+        msg => console.log(msg),
+        error => console.log(error)
+      );
+      console.log('Hello');
+
+      // 代码从上往下执行，Promise 中 excutor 中的代码是同步的，所以先执行 resolve，生成微任务，加入微任务队列，暂时不执行，然后输出 'Hello'，再去微任务队列执行微任务
+
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('fulfilled'); // 2s 后才产生微任务，所以 2s 后才能看到结果
+        }, 2000);
+      }).then(
+        msg => console.log(msg),
+        error => console.log(error)
+      );
+
+      let p1 = new Promise((resolve, reject) => {
+        // resolve('成功');
+        // reject('拒绝');
+        setTimeout(() => {
+          resolve('fulfilled');
+        }, 2000);
+      });
+
+      new Promise((resolve, reject) => {
+        resolve(p1); // 由 p1 来决定这个 Promise 的结果
+      }).then(
+        msg => console.log(msg),
+        error => console.log(error)
+      );
+
+      // 状态改变是不可逆的，状态一旦改变就会产生微任务，所以 resolve/reject 只能执行一次
+    </script>
+  </body>
+</html>

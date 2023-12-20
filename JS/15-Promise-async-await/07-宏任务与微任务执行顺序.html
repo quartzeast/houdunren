@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 同步 > 微任务 > 宏任务
+      setTimeout(() => {
+        console.log('setTimout'); // 加入宏任务队列
+      }, 0);
+
+      new Promise(resolve => {
+        resolve();
+        console.log('Promise'); // executor 中的代码是同步执行的
+      }).then(value => console.log('success')); // then 中当需要 Promise 的状态 settled 之后，才会将任务加入到微任务队列中
+
+      console.log('Hello World'); // 同步立即执行
+
+      // Promise -> Hello World -> success -> setTimeout
+    </script>
+  </body>
+</html>

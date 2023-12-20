@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let promise = new Promise(resolve => {
+        setTimeout(() => {
+          resolve(); // JS 把这个回调函数放入了宏任务队列
+          console.log('setTimeout');
+        }, 0);
+        console.log('Promise');
+      }).then(value => console.log('成功'));
+      console.log('Hello World');
+
+      /* 
+        1. 同步代码执行 excutor 中的代码是同步的，setTimeout 将回调函数放入宏任务队列，输出 Promise，然后再输出 Hello World。
+        2. 此时执行栈和微任务队列中都为空，JS 去查看宏任务队列，发现有 setTimeout 放进去的回调，执行该回调，
+        输出 setTimeout，执行 resolve() 之后，JS 将 then 中的回调放入微任务队列。
+        3. Event Loop 再一次轮询，执行栈为空，微任务队列中有上一步放入的 then 中的回调，执行，输出 成功
+
+        综上所述：Promise -> Hello World -> setTimeout -> 成功
+
+        这里的关键点在于，如果 setTimeout 中的宏任务回调不执行，Promise 的微任务就不会生成，这个微任务是在宏任务的执行过程中创建出来的
+      */
+    </script>
+  </body>
+</html>
